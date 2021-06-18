@@ -15,6 +15,15 @@ client.on("message", function(message) {
                      "You poor soul!", 
                      "I'm here for you"]
 
+    const boops = [
+
+        "Here you go",
+        "One boop for you",
+        "boop coming right up",
+        "boop"
+
+    ]
+
     const wins = ["That's amazing! 💯", 
                   "You did great today! 💛", 
                   "Congrats on your win 😄"]
@@ -79,13 +88,15 @@ client.on("message", function(message) {
 
 
         if (args[i] === "boop") {
-            var randomIndex = Math.floor((Math.random() * phrases.length) + 0);
-            message.reply(`${phrases[randomIndex]} https://tenor.com/view/furry-boop-cute-scribble-scratch-gif-15225693`);
+            var randomIndex = Math.floor((Math.random() * boops.length) + 0);
+            message.reply(`${boops[randomIndex]}`);
+            message.channel.send('https://tenor.com/view/furry-boop-cute-scribble-scratch-gif-15225693')
         }
 
-        if (args[i] === "hug") {
+        if (args[i] === "hug" || args[i] === "hugs") {
             var randomIndex = Math.floor((Math.random() * phrases.length) + 0);
-            message.reply(`${phrases[randomIndex]} https://tenor.com/view/bay-max-therethere-hiro-hamada-big-hero6-comfort-gif-9771555`);
+            message.reply(`${phrases[randomIndex]}`);
+            message.channel.send('https://tenor.com/view/bay-max-therethere-hiro-hamada-big-hero6-comfort-gif-9771555')
         }
 
         if (args[i] === "woohoo") {
@@ -112,7 +123,12 @@ client.on("message", function(message) {
 
         if (args[i] === "cats") {
             var randomIndex = Math.floor((Math.random() * cats.length) + 0);
-            message.reply(`${cats[randomIndex]}`);
+            message.channel.send(`${cats[randomIndex]}`);
+        }
+
+
+        if (args[i].startsWith("/help")) {
+            message.channel.send(`Keywords: woop, tough day, sad, boop, hug/hugs, woohoo, thanks/thank you, cats`);
         }
     }
 
